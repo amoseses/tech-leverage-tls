@@ -1,4 +1,9 @@
-pandas
-pytest
-matplotlib
+pandas>=1.5
 numpy
+matplotlib
+pytest
+openpyxl
+python-dotenv
+gspread               # optional, for Google Sheets fetch
+oauth2client          # optional, for Google Sheets fetch
+python-dateutil
