@@ -1,6 +1,22 @@
+# Python
 __pycache__/
-*.csv
-*.json
-*.png
-.DS_Store
+*.pyc
+*.pyo
+*.pyd
+venv/
 .env
+.env.*
+
+# Data
+data/raw/*
+!data/raw/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VSCode
+.vscode/
