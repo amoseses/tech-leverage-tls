@@ -1,14 +1,16 @@
 import pandas as pd
-from src.tls_metric.tls_calculator import compute_tls
+from src.tls_calculator import compute_tls_df
 
-def test_tls_computation():
+def test_compute_tls_df_basic():
     df = pd.DataFrame({
-        'automation_level': [0.6],
-        'ai_tools': [2],
-        'capital_intensity': [0.4]
+        'firm_id':[1],
+        'firm_name':['A'],
+        'tools_count':[6],
+        'tools_frequency_of_use_numeric':[1.0],
+        'monthly_labor_hours_2025_total':[800],
     })
-    result = compute_tls(df)
-    expected = 2*0.6 + 2 - 0.5*0.4  # = 2.8
-    assert abs(result['tls_score'].iloc[0] - expected) < 1e-6
+    out = compute_tls_df(df)
+    assert 'tls' in out.columns
+    assert round(out['tls'].iloc[0], 6) == round((6*1.0)/800*1000.0, 6)
 
 
