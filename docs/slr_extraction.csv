@@ -1,45 +1,35 @@
 # Systematic Literature Review (SLR) Extraction Table
 
-This table captures all peer-reviewed studies analyzed for the Technology Leverage Score (TLS) project.  
-Each row corresponds to one paper, capturing its key findings and connection to TLS variables.
-
-> 🧩 *Instructions:*  
-> - Fill each cell directly in Markdown or open this file in Excel/Sheets and re-export as `.md`  
-> - Keep “Relevance to TLS” focused on which part of the formula it supports (`N_tools`, `P_auto`, `H_month`, or composite)
+This table summarizes key studies informing the Technology Leverage Score (TLS) framework.  
+Each row represents one peer-reviewed paper analyzed during the SLR process.
 
 ---
 
 | Citation | Year | Tech Category | Entrepreneurship Context | Methodology | Key Finding | Mechanism Type | Metric Used | Gap / Limitation | Relevance to TLS |
 |-----------|------|----------------|---------------------------|--------------|--------------|----------------|---------------|------------------|
-|  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |
+| **Brynjolfsson & McAfee (2014) – *The Second Machine Age*** | 2014 | Automation | General Firms | Conceptual | Automation substitutes routine labor and increases productivity. | Efficiency | Productivity per labor hour | No SME quantitative index. | Supports `P_auto` variable |
+| [Paper Title / Author], [Year] | [Year] | [Category] | [SMEs / Startups / etc.] | [Empirical / Conceptual / Theoretical] | [1–2 sentence summary of finding] | [Efficiency / Scale / Capital Substitution / Expertise Substitution] | [Metric used by study] | [What was missing or unclear] | [Which TLS variable it supports] |
+| [Paper Title / Author], [Year] | [Year] | [Category] | [SMEs / Startups / etc.] | [Empirical / Conceptual / Theoretical] | [1–2 sentence summary of finding] | [Efficiency / Scale / Capital Substitution / Expertise Substitution] | [Metric used by study] | [What was missing or unclear] | [Which TLS variable it supports] |
+| [Paper Title / Author], [Year] | [Year] | [Category] | [SMEs / Startups / etc.] | [Empirical / Conceptual / Theoretical] | [1–2 sentence summary of finding] | [Efficiency / Scale / Capital Substitution / Expertise Substitution] | [Metric used by study] | [What was missing or unclear] | [Which TLS variable it supports] |
+| [Paper Title / Author], [Year] | [Year] | [Category] | [SMEs / Startups / etc.] | [Empirical / Conceptual / Theoretical] | [1–2 sentence summary of finding] | [Efficiency / Scale / Capital Substitution / Expertise Substitution] | [Metric used by study] | [What was missing or unclear] | [Which TLS variable it supports] |
+| [Paper Title / Author], [Year] | [Year] | [Category] | [SMEs / Startups / etc.] | [Empirical / Conceptual / Theoretical] | [1–2 sentence summary of finding] | [Efficiency / Scale / Capital Substitution / Expertise Substitution] | [Metric used by study] | [What was missing or unclear] | [Which TLS variable it supports] |
+| [Paper Title / Author], [Year] | [Year] | [Category] | [SMEs / Startups / etc.] | [Empirical / Conceptual / Theoretical] | [1–2 sentence summary of finding] | [Efficiency / Scale / Capital Substitution / Expertise Substitution] | [Metric used by study] | [What was missing or unclear] | [Which TLS variable it supports] |
+| [Paper Title / Author], [Year] | [Year] | [Category] | [SMEs / Startups / etc.] | [Empirical / Conceptual / Theoretical] | [1–2 sentence summary of finding] | [Efficiency / Scale / Capital Substitution / Expertise Substitution] | [Metric used by study] | [What was missing or unclear] | [Which TLS variable it supports] |
+| [Paper Title / Author], [Year] | [Year] | [Category] | [SMEs / Startups / etc.] | [Empirical / Conceptual / Theoretical] | [1–2 sentence summary of finding] | [Efficiency / Scale / Capital Substitution / Expertise Substitution] | [Metric used by study] | [What was missing or unclear] | [Which TLS variable it supports] |
+| [Paper Title / Author], [Year] | [Year] | [Category] | [SMEs / Startups / etc.] | [Empirical / Conceptual / Theoretical] | [1–2 sentence summary of finding] | [Efficiency / Scale / Capital Substitution / Expertise Substitution] | [Metric used by study] | [What was missing or unclear] | [Which TLS variable it supports] |
+| [Paper Title / Author], [Year] | [Year] | [Category] | [SMEs / Startups / etc.] | [Empirical / Conceptual / Theoretical] | [1–2 sentence summary of finding] | [Efficiency / Scale / Capital Substitution / Expertise Substitution] | [Metric used by study] | [What was missing or unclear] | [Which TLS variable it supports] |
+| [Paper Title / Author], [Year] | [Year] | [Category] | [SMEs / Startups / etc.] | [Empirical / Conceptual / Theoretical] | [1–2 sentence summary of finding] | [Efficiency / Scale / Capital Substitution / Expertise Substitution] | [Metric used by study] | [What was missing or unclear] | [Which TLS variable it supports] |
+| [Paper Title / Author], [Year] | [Year] | [Category] | [SMEs / Startups / etc.] | [Empirical / Conceptual / Theoretical] | [1–2 sentence summary of finding] | [Efficiency / Scale / Capital Substitution / Expertise Substitution] | [Metric used by study] | [What was missing or unclear] | [Which TLS variable it supports] |
+| [Paper Title / Author], [Year] | [Year] | [Category] | [SMEs / Startups / etc.] | [Empirical / Conceptual / Theoretical] | [1–2 sentence summary of finding] | [Efficiency / Scale / Capital Substitution / Expertise Substitution] | [Metric used by study] | [What was missing or unclear] | [Which TLS variable it supports] |
+| [Paper Title / Author], [Year] | [Year] | [Category] | [SMEs / Startups / etc.] | [Empirical / Conceptual / Theoretical] | [1–2 sentence summary of finding] | [Efficiency / Scale / Capital Substitution / Expertise Substitution] | [Metric used by study] | [What was missing or unclear] | [Which TLS variable it supports] |
+| [Paper Title / Author], [Year] | [Year] | [Category] | [SMEs / Startups / etc.] | [Empirical / Conceptual / Theoretical] | [1–2 sentence summary of finding] | [Efficiency / Scale / Capital Substitution / Expertise Substitution] | [Metric used by study] | [What was missing or unclear] | [Which TLS variable it supports] |
+| [Paper Title / Author], [Year] | [Year] | [Category] | [SMEs / Startups / etc.] | [Empirical / Conceptual / Theoretical] | [1–2 sentence summary of finding] | [Efficiency / Scale / Capital Substitution / Expertise Substitution] | [Metric used by study] | [What was missing or unclear] | [Which TLS variable it supports] |
+| [Paper Title / Author], [Year] | [Year] | [Category] | [SMEs / Startups / etc.] | [Empirical / Conceptual / Theoretical] | [1–2 sentence summary of finding] | [Efficiency / Scale / Capital Substitution / Expertise Substitution] | [Metric used by study] | [What was missing or unclear] | [Which TLS variable it supports] |
+| [Paper Title / Author], [Year] | [Year] | [Category] | [SMEs / Startups / etc.] | [Empirical / Conceptual / Theoretical] | [1–2 sentence summary of finding] | [Efficiency / Scale / Capital Substitution / Expertise Substitution] | [Metric used by study] | [What was missing or unclear] | [Which TLS variable it supports] |
+| [Paper Title / Author], [Year] | [Year] | [Category] | [SMEs / Startups / etc.] | [Empirical / Conceptual / Theoretical] | [1–2 sentence summary of finding] | [Efficiency / Scale / Capital Substitution / Expertise Substitution] | [Metric used by study] | [What was missing or unclear] | [Which TLS variable it supports] |
+| [Paper Title / Author], [Year] | [Year] | [Category] | [SMEs / Startups / etc.] | [Empirical / Conceptual / Theoretical] | [1–2 sentence summary of finding] | [Efficiency / Scale / Capital Substitution / Expertise Substitution] | [Metric used by study] | [What was missing or unclear] | [Which TLS variable it supports] |
+| [Paper Title / Author], [Year] | [Year] | [Category] | [SMEs / Startups / etc.] | [Empirical / Conceptual / Theoretical] | [1–2 sentence summary of finding] | [Efficiency / Scale / Capital Substitution / Expertise Substitution] | [Metric used by study] | [What was missing or unclear] | [Which TLS variable it supports] |
 
 ---
 
-### Column Guide
-
-| Column | What to Enter | Example |
-|---------|----------------|---------|
-| **Citation** | Full paper reference | Brynjolfsson & McAfee (2014) – *The Second Machine Age* |
-| **Year** | Publication year | 2014 |
-| **Tech Category** | AI, Automation, Cloud, Platform, etc. | Automation |
-| **Entrepreneurship Context** | SMEs, Startups, General Firms | SMEs |
-| **Methodology** | Empirical / Conceptual / Theoretical / Survey | Empirical |
-| **Key Finding** | 1–2 sentence summary of what the paper found | “Automation substitutes routine labor and increases productivity.” |
-| **Mechanism Type** | Efficiency / Scale / Capital Substitution / Expertise Substitution | Efficiency |
-| **Metric Used** | What measure or index the paper used | Productivity per labor hour |
-| **Gap / Limitation** | Missing piece in prior research | “No SME quantitative index.” |
-| **Relevance to TLS** | How it maps to your TLS model | Supports `P_auto` variable |
-
----
-
-**Tip:** Once filled, you can export this table to CSV via [https://tableconvert.com/markdown-to-csv](https://tableconvert.com/markdown-to-csv) to sync with your data files for your IEEE appendices.
-
+> 🔍 *Tip:* Once you have 20–30 filled rows, export this Markdown file to CSV using [tableconvert.com/markdown-to-csv](https://tableconvert.com/markdown-to-csv) — it’ll be IEEE-appendix ready.
