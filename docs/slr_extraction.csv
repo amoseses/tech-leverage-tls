@@ -1,12 +1,45 @@
-# SLR Extraction Summary
+# Systematic Literature Review (SLR) Extraction Table
+
+This table captures all peer-reviewed studies analyzed for the Technology Leverage Score (TLS) project.  
+Each row corresponds to one paper, capturing its key findings and connection to TLS variables.
+
+> 🧩 *Instructions:*  
+> - Fill each cell directly in Markdown or open this file in Excel/Sheets and re-export as `.md`  
+> - Keep “Relevance to TLS” focused on which part of the formula it supports (`N_tools`, `P_auto`, `H_month`, or composite)
+
+---
 
 | Citation | Year | Tech Category | Entrepreneurship Context | Methodology | Key Finding | Mechanism Type | Metric Used | Gap / Limitation | Relevance to TLS |
 |-----------|------|----------------|---------------------------|--------------|--------------|----------------|---------------|------------------|
-| Brynjolfsson & McAfee (2014) - *The Second Machine Age* | 2014 | Automation | General Firms | Conceptual | Automation substitutes routine labor and increases productivity | Efficiency | Productivity per labor hour | No SME quantitative index | Supports `P_auto` variable |
-| Nambisan (2017) - *Digital Entrepreneurship* | 2017 | Digital Platforms | Entrepreneurship Theory | Conceptual | Digital tools expand entrepreneurial affordances beyond local context | Scale | Platform participation rate | No quantifiable digital leverage | Supports `N_tools` variable |
-| Autio et al. (2018) - *Digital Affordances and Ecosystems* | 2018 | Platform Technologies | SME Context | Theoretical | Digital ecosystems lower entry barriers and reduce capital needs | Scale | Case-based affordance index | No unified operational metric | Supports substitution hypothesis |
-| Bhatt et al. (2019) - *IT and Capital Efficiency in SMEs* | 2019 | Cloud/SaaS | SMEs | Empirical | Cloud reduces upfront capital investment and increases efficiency | Capital Substitution | IT Spend / Revenue | Does not measure automation level | Supports `N_tools` variable |
-| Davenport & Ronanki (2018) - *AI for the Real World* | 2018 | AI/Automation | SMEs and Large Firms | Empirical | AI augments decision-making and automates expert tasks | Expertise Substitution | Number of AI use cases | No link to firm-level outcomes | Supports `P_auto` variable |
-| OECD (2022) - *SME Digitalization Outlook* | 2022 | Digital Adoption | SMEs | Survey | Digital maturity correlates with productivity and resilience | Efficiency | Digital Maturity Index | Subjective self-reported index | Shows macro-level relevance of TLS |
-| Müller et al. (2023) - *Digital Transformation in SMEs* | 2023 | Automation/Analytics | SMEs | Empirical | Digital tools improve process flexibility and performance | Efficiency | Adoption rate (%) | No common scaling across firms | Supports combined TLS formula |
-| Li et al. (2021) - *Platform Scaling and Firm Growth* | 2021 | Platforms/AI | Startups | Empirical | Platform adoption accelerates scaling with limited headcount | Scale | Platform adoption rate | No formal measure of leverage | Supports operational leverage concept |
+|  |  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |  |
+
+---
+
+### Column Guide
+
+| Column | What to Enter | Example |
+|---------|----------------|---------|
+| **Citation** | Full paper reference | Brynjolfsson & McAfee (2014) – *The Second Machine Age* |
+| **Year** | Publication year | 2014 |
+| **Tech Category** | AI, Automation, Cloud, Platform, etc. | Automation |
+| **Entrepreneurship Context** | SMEs, Startups, General Firms | SMEs |
+| **Methodology** | Empirical / Conceptual / Theoretical / Survey | Empirical |
+| **Key Finding** | 1–2 sentence summary of what the paper found | “Automation substitutes routine labor and increases productivity.” |
+| **Mechanism Type** | Efficiency / Scale / Capital Substitution / Expertise Substitution | Efficiency |
+| **Metric Used** | What measure or index the paper used | Productivity per labor hour |
+| **Gap / Limitation** | Missing piece in prior research | “No SME quantitative index.” |
+| **Relevance to TLS** | How it maps to your TLS model | Supports `P_auto` variable |
+
+---
+
+**Tip:** Once filled, you can export this table to CSV via [https://tableconvert.com/markdown-to-csv](https://tableconvert.com/markdown-to-csv) to sync with your data files for your IEEE appendices.
+
