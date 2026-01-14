@@ -1,8 +1,17 @@
-# Technology Leverage Score (TLS) — Repo
+# Tech Leverage Score (TLS)
 
-**Project:** Technology as a Strategic Co-Founder: Quantifying Digital Leverage in Entrepreneurship (2010–2025)
+Technology functions as a substitute for labor, capital, and expertise in venture creation.  
+This repo contains the TLS computation, a small test suite, and CI.
 
-This repository contains code, templates, and analysis scaffolding to collect firm-level intake data (via Google Forms/Sheets), compute the Technology Leverage Score (TLS), and run basic analyses for the TLS/TAIM study.
+## Quickstart
 
-Quickstart
-1. Clone the repo:
+```bash
+# create virtual env (Linux / macOS / Chromebook Linux)
+python -m venv venv
+source venv/bin/activate
+
+# install
+pip install -r requirements.txt
+
+# run tests
+pytest -q

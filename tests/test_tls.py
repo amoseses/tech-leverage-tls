@@ -1,20 +1,18 @@
-import pandas as pd
-import numpy as np
-from src.tls_calculator.tls_calculator import compute_tls_row, compute_tls_df
+from src.tls_metric.compute import compute_tls
+import math
+import pytest
 
-def test_compute_tls_row_basic():
-    # simple example: 6 tools, 0.35 p_auto, 800 hours -> raw = (6*0.35)/800 = 0.002625 -> scaled 2.625
-    val = compute_tls_row(n_tools=6, p_auto=0.35, labor_hours_month=800, frequency_proxy=0.0, scale=1000.0)
-    assert np.isclose(val, 2.625, atol=1e-6)
+def test_compute_tls_example():
+    expected = 2.625  # 6 * 0.35 = 2.1; 2.1 / 800 = 0.002625; *1000 = 2.625
+    result = compute_tls(6, 0.35, 800)
+    assert math.isclose(result, expected, rel_tol=1e-9)
 
-def test_compute_tls_df_on_frame():
-    df = pd.DataFrame({
-        'firm_id':[1],
-        'firm_name':['A'],
-        'tools_count':[6],
-        'p_auto':[0.35],
-        'monthly_labor_hours_2025_total':[800]
-    })
-    out = compute_tls_df(df)
-    assert 'tls' in out.columns
-    assert np.isclose(out['tls'].iloc[0], 2.625, atol=1e-6)
+def test_bad_hours_raises():
+    with pytest.raises(ValueError):
+        compute_tls(3, 0.2, 0)
+
+def test_p_auto_bounds():
+    with pytest.raises(ValueError):
+        compute_tls(3, -0.1, 100)
+    with pytest.raises(ValueError):
+        compute_tls(3, 1.1, 100)

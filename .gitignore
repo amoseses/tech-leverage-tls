@@ -3,20 +3,19 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+
+# Virtual envs
 venv/
 .env
 .env.*
 
 # Data
-data/raw/*
-!data/raw/.gitkeep
+data/raw/
+data/processed/
 
-# OS
+# Editor
+.vscode/
 .DS_Store
-Thumbs.db
 
 # Jupyter
-.ipynb_checkpoints/
-
-# VSCode
-.vscode/
+.ipynb_checkpoints
