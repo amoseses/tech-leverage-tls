@@ -19,3 +19,7 @@ data/processed/
 
 # Jupyter
 .ipynb_checkpoints
+
+.venv/
+__pycache__/
+*.xlsx
