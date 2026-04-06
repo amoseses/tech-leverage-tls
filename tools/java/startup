@@ -1,0 +1,117 @@
+/**
+ * Startup.java
+ * Represents one firm in the TLS dataset.
+ * Fields are typed (int, double) instead of raw Strings.
+ */
+public class Startup {
+
+    // ── Fields ────────────────────────────────────────────────────────
+    String name;
+    String industry;       // Fintech | Enterprise | CyberSec | CleanTech | AI/ML
+    int    founded;
+    int    employees;      // FTE headcount
+    String revenueRange;
+    String fundingStage;
+    String techStack;
+    String automationLevel; // Low | Medium | High
+    String aiTools;         // comma-separated list
+    int    growthRate;      // YoY % (e.g. 80 = 80%)
+    double techSpendUSD;    // annual tech expenditure
+    double laborHours;      // total annual hours (employees × 2080)
+    String ycBatch;         // e.g. "W22" or "n/a"
+    String country;
+
+    // ── Constructor ───────────────────────────────────────────────────
+    public Startup(String name, String industry, int founded, int employees,
+                   String revenueRange, String fundingStage, String techStack,
+                   String automationLevel, String aiTools, int growthRate,
+                   double techSpendUSD, double laborHours,
+                   String ycBatch, String country) {
+        this.name            = name;
+        this.industry        = industry;
+        this.founded         = founded;
+        this.employees       = employees;
+        this.revenueRange    = revenueRange;
+        this.fundingStage    = fundingStage;
+        this.techStack       = techStack;
+        this.automationLevel = automationLevel;
+        this.aiTools         = aiTools;
+        this.growthRate      = growthRate;
+        this.techSpendUSD    = techSpendUSD;
+        this.laborHours      = laborHours;
+        this.ycBatch         = ycBatch;
+        this.country         = country;
+    }
+
+    // ── TLS Calculators ───────────────────────────────────────────────
+
+    /** TLS v1 = 1000 × (techSpend / laborHours) — original formula */
+    public double tlsV1() {
+        if (laborHours == 0) return 0;
+        return 1000.0 * techSpendUSD / laborHours;
+    }
+
+    /** Automation multiplier for TLS v2 */
+    public double autoMult() {
+        return switch (automationLevel.toLowerCase()) {
+            case "high"   -> 1.30;
+            case "low"    -> 0.75;
+            default       -> 1.00;  // medium
+        };
+    }
+
+    /** Number of AI tools listed */
+    public int aiToolCount() {
+        if (aiTools == null || aiTools.isBlank()) return 0;
+        return aiTools.split(",").length;
+    }
+
+    /** AIBonus = 1.0 + min(toolCount, 5) × 0.04 */
+    public double aiBonus() {
+        return 1.0 + Math.min(aiToolCount(), 5) * 0.04;
+    }
+
+    /** GrowthFactor = 1.0 + min(growth, 100)/100 × 0.15 */
+    public double growthFactor() {
+        return 1.0 + Math.min(growthRate, 100) / 100.0 * 0.15;
+    }
+
+    /** TLS v2 = TLS_v1 × autoMult × aiBonus × growthFactor */
+    public double tlsV2() {
+        return tlsV1() * autoMult() * aiBonus() * growthFactor();
+    }
+
+    /** Scale-Adjusted TLS = TLS_v1 / ln(employees) */
+    public double scaledTLS() {
+        if (employees <= 1) return 0;
+        return tlsV1() / Math.log(employees);
+    }
+
+    /** ROI Proxy = TLS_v2 × (1 + growthRate/100) */
+    public double roiProxy() {
+        return tlsV2() * (1.0 + growthRate / 100.0);
+    }
+
+    // ── Display ───────────────────────────────────────────────────────
+    @Override
+    public String toString() {
+        return String.format(
+            "%-22s | %-10s | %4d | %5d emp | %-12s | %-9s | TLS_v2: %7.1f | Growth: %3d%%",
+            name, industry, founded, employees,
+            revenueRange, fundingStage, tlsV2(), growthRate);
+    }
+
+    public void printCard() {
+        System.out.println("─".repeat(80));
+        System.out.printf("  %s  (%s) — Founded %d — %s%n",
+            name, industry, founded, country);
+        System.out.printf("  %d FTE | %s | %s | YC: %s%n",
+            employees, revenueRange, fundingStage, ycBatch);
+        System.out.printf("  Stack:  %s%n", techStack);
+        System.out.printf("  AI:     %s  [%d tools]%n", aiTools, aiToolCount());
+        System.out.printf("  TLS v1: %8.2f  |  TLS v2: %8.2f%n", tlsV1(), tlsV2());
+        System.out.printf("  Scaled: %8.2f  |  ROI Px: %8.2f  |  Growth: %d%%%n",
+            scaledTLS(), roiProxy(), growthRate);
+        System.out.println("─".repeat(80));
+    }
+}
