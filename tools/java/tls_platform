@@ -1,0 +1,451 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+
+/**
+ * TLSPlatform.java
+ *
+ * ArrayList-based TLS Research Platform.
+ * CS Class upgrade: String[][] → ArrayList<Startup>
+ *
+ * COMPILE:  javac Startup.java TLSPlatform.java
+ * RUN:      java  TLSPlatform
+ */
+public class TLSPlatform {
+
+    // ── The ArrayList — this is the whole database ────────────────────
+    static ArrayList<Startup> firms = new ArrayList<>();
+
+    // ═══════════════════════════════════════════════════════════════════
+    //  SEED DATA — 50 companies
+    //  To add your own: see the addFirm() calls at the bottom of main()
+    // ═══════════════════════════════════════════════════════════════════
+    static void loadData() {
+        // Format: name, industry, founded, employees, revenue, stage,
+        //         stack, automation, aiTools, growth%, techSpend$, laborHours,
+        //         ycBatch, country
+        //
+        // laborHours = employees × 2080
+
+        // ── FINTECH (15) ──────────────────────────────────────────────
+        firms.add(new Startup("Stripe","Fintech",2010,8000,"$1B+","Public",
+            "Java,Ruby,Go","High","Stripe Radar,OpenAI API,Stripe AI",
+            22,420_000_000,16_640_000,"W10","USA"));
+        firms.add(new Startup("Plaid","Fintech",2013,900,"$100M-$500M","Series D",
+            "Python,Node.js,Go","High","LLM pipeline,Datadog AI",
+            18,52_000_000,1_872_000,"W13","USA"));
+        firms.add(new Startup("Brex","Fintech",2017,1200,"$100M-$500M","Series D",
+            "Elixir,Kotlin,React","High","GPT-4,Amplitude AI,Brex AI",
+            35,74_000_000,2_496_000,"W17","USA"));
+        firms.add(new Startup("Ramp","Fintech",2019,1000,"$100M-$500M","Series C",
+            "Python,TypeScript,AWS","High","GPT-4,Custom LLM",
+            80,68_000_000,2_080_000,"S19","USA"));
+        firms.add(new Startup("Carta","Fintech",2012,1600,"$100M-$500M","Series G",
+            "Python,Ruby,React","Medium","DocuSign AI,ML valuation",
+            20,85_000_000,3_328_000,"W12","USA"));
+        firms.add(new Startup("Gusto","Fintech",2011,2300,"$500M-$1B","Series E",
+            "Ruby,React,PostgreSQL","High","AI payroll,ML tax engine",
+            25,110_000_000,4_784_000,"W11","USA"));
+        firms.add(new Startup("Mercury","Fintech",2017,700,"$50M-$100M","Series C",
+            "Haskell,React,AWS","High","Fraud ML,GPT-4,Anomaly AI",
+            55,42_000_000,1_456_000,"S17","USA"));
+        firms.add(new Startup("Pilot","Fintech",2017,300,"$50M-$100M","Series C",
+            "Python,React,Kubernetes","Medium","AI bookkeeping,ML categorizer",
+            30,18_000_000,624_000,"W17","USA"));
+        firms.add(new Startup("Sardine","Fintech",2020,150,"$10M-$50M","Series B",
+            "Python,Go,AWS","High","Fraud AI,Behavior ML,NLP engine,Graph AI",
+            95,9_000_000,312_000,"S20","USA"));
+        firms.add(new Startup("Middesk","Fintech",2018,150,"$10M-$50M","Series B",
+            "Python,React,AWS","Medium","OpenAI API,Plaid integration",
+            65,9_000_000,312_000,"W18","USA"));
+        firms.add(new Startup("Pave","Fintech",2019,150,"$10M-$50M","Series B",
+            "TypeScript,Python,GCP","Medium","Comp AI,ML benchmarking",
+            70,8_000_000,312_000,"S19","USA"));
+        firms.add(new Startup("Pinwheel","Fintech",2018,100,"$10M-$50M","Series B",
+            "Node.js,Python,AWS","Medium","Income AI,ML verification",
+            50,5_000_000,208_000,"W18","USA"));
+        firms.add(new Startup("Atomic","Fintech",2019,80,"$10M-$50M","Series B",
+            "TypeScript,Go,AWS","High","Investment AI,ML portfolio,NLP",
+            85,4_000_000,166_400,"S19","USA"));
+        firms.add(new Startup("Adyen","Fintech",2006,4000,"$1B+","Public",
+            "Java,Python,Go","High","Risk ML,Fraud AI",
+            30,200_000_000,8_320_000,"n/a","NLD"));
+        firms.add(new Startup("Checkout.com","Fintech",2012,2000,"$500M-$1B","Series D",
+            "Java,Python,Kubernetes","High","Fraud AI,Risk ML",
+            28,95_000_000,4_160_000,"n/a","GBR"));
+
+        // ── ENTERPRISE (15) ───────────────────────────────────────────
+        firms.add(new Startup("Rippling","Enterprise",2016,3500,"$500M-$1B","Series F",
+            "Ruby,React,PostgreSQL","High","OpenAI API,Workato,Rippling AI",
+            40,210_000_000,7_280_000,"W16","USA"));
+        firms.add(new Startup("Deel","Enterprise",2019,4500,"$500M-$1B","Series D",
+            "Node.js,React,MongoDB","Medium","Document AI,Compliance AI",
+            60,220_000_000,9_360_000,"W19","USA"));
+        firms.add(new Startup("Vercel","Enterprise",2015,600,"$100M-$500M","Series C",
+            "Next.js,Rust,Go","High","v0 LLM,Edge AI,Sentry AI",
+            70,38_000_000,1_248_000,"W15","USA"));
+        firms.add(new Startup("Linear","Enterprise",2019,80,"$10M-$50M","Series B",
+            "TypeScript,Rust,GraphQL","High","Claude API,Internal AI",
+            120,6_000_000,166_400,"S19","USA"));
+        firms.add(new Startup("Notion","Enterprise",2013,500,"$100M-$500M","Series C",
+            "TypeScript,Go,Redis","High","Notion AI,GPT-4",
+            45,32_000_000,1_040_000,"n/a","USA"));
+        firms.add(new Startup("Airtable","Enterprise",2012,700,"$100M-$500M","Series F",
+            "JavaScript,Python,AWS","High","Airtable AI,ML automation",
+            25,44_000_000,1_456_000,"W12","USA"));
+        firms.add(new Startup("Retool","Enterprise",2017,400,"$50M-$100M","Series C",
+            "TypeScript,Python,React","High","Retool AI,GPT-4,SQL AI",
+            60,25_000_000,832_000,"W17","USA"));
+        firms.add(new Startup("Replit","Enterprise",2016,200,"$50M-$100M","Series B",
+            "Python,Nix,Kubernetes","High","Ghostwriter,Claude,GPT-4,Code AI",
+            110,14_000_000,416_000,"W16","USA"));
+        firms.add(new Startup("Scale AI","Enterprise",2016,1000,"$500M-$1B","Series F",
+            "Python,React,PostgreSQL","High","RLHF pipelines,GPT-4,Spellbook,Eval AI",
+            50,65_000_000,2_080_000,"W16","USA"));
+        firms.add(new Startup("Hugging Face","Enterprise",2016,400,"$100M-$500M","Series D",
+            "Python,Rust,PyTorch","High","Transformers,PEFT,LoRA,Inference API,Spaces",
+            100,28_000_000,832_000,"n/a","USA"));
+        firms.add(new Startup("Cohere","Enterprise",2019,500,"$100M-$500M","Series C",
+            "Python,C++,CUDA","High","Command R,Embed,Rerank,Classify",
+            90,35_000_000,1_040_000,"n/a","CAN"));
+        firms.add(new Startup("Anduril","Enterprise",2017,3000,"$500M-$1B","Series F",
+            "C++,Rust,Python","High","Vision AI,Edge AI,Lattice OS",
+            55,190_000_000,6_240_000,"n/a","USA"));
+        firms.add(new Startup("Figma","Enterprise",2012,1200,"$500M-$1B","Acquired",
+            "TypeScript,Rust,C++","High","Figma AI,Auto Layout,Dev Copilot",
+            35,70_000_000,2_496_000,"W12","USA"));
+        firms.add(new Startup("Coda","Enterprise",2014,200,"$50M-$100M","Series D",
+            "TypeScript,Python,GCP","High","Coda AI,GPT-4,Formula AI",
+            40,13_000_000,416_000,"n/a","USA"));
+        firms.add(new Startup("Loom","Enterprise",2015,300,"$50M-$100M","Acquired",
+            "React,Node.js,WebRTC","Medium","Transcription AI,Summary AI",
+            20,18_000_000,624_000,"W15","USA"));
+
+        // ── CYBERSEC (10) ─────────────────────────────────────────────
+        firms.add(new Startup("Wiz","CyberSec",2020,1500,"$500M-$1B","Series E",
+            "Go,Python,Kubernetes","High","Threat AI,CNAPP ML,SIEM AI",
+            150,100_000_000,3_120_000,"n/a","USA"));
+        firms.add(new Startup("Orca Security","CyberSec",2019,600,"$100M-$500M","Series C",
+            "Python,Go,AWS","High","ML anomaly,NLP policy,Threat AI",
+            90,42_000_000,1_248_000,"n/a","ISR"));
+        firms.add(new Startup("Chainguard","CyberSec",2021,200,"$10M-$50M","Series B",
+            "Go,Rust,Sigstore","High","SBOM AI,Vuln ML",
+            200,16_000_000,416_000,"n/a","USA"));
+        firms.add(new Startup("Abnormal Security","CyberSec",2018,700,"$100M-$500M","Series D",
+            "Python,AWS,Kafka","High","NLP email AI,Behavior ML,Identity AI",
+            75,50_000_000,1_456_000,"n/a","USA"));
+        firms.add(new Startup("Verkada","CyberSec",2016,2000,"$500M-$1B","Series D",
+            "Python,React,C++","High","Vision AI,Crowd analytics",
+            45,110_000_000,4_160_000,"n/a","USA"));
+        firms.add(new Startup("Armis","CyberSec",2015,800,"$100M-$500M","Series D",
+            "Python,Go,Elasticsearch","High","IoT ML,Asset AI,Risk scoring",
+            55,52_000_000,1_664_000,"n/a","USA"));
+        firms.add(new Startup("Lacework","CyberSec",2015,600,"$100M-$500M","Series D",
+            "Go,Python,Snowflake","High","Behavior AI,Anomaly ML",
+            40,40_000_000,1_248_000,"n/a","USA"));
+        firms.add(new Startup("Snyk","CyberSec",2015,1200,"$100M-$500M","Series F",
+            "TypeScript,Go,Python","High","DeepCode AI,Vuln ML,Fix AI",
+            35,72_000_000,2_496_000,"n/a","GBR"));
+        firms.add(new Startup("SentinelOne","CyberSec",2013,2500,"$500M-$1B","Public",
+            "C++,Python,Go","High","Purple AI,Singularity ML,XDR AI",
+            50,130_000_000,5_200_000,"n/a","USA"));
+        firms.add(new Startup("Cloudflare","CyberSec",2009,3500,"$1B+","Public",
+            "Go,Rust,Lua","High","AI Gateway,Bot ML,DDoS AI",
+            28,190_000_000,7_280_000,"n/a","USA"));
+
+        // ── CLEANTECH (5) ─────────────────────────────────────────────
+        firms.add(new Startup("Aurora Solar","CleanTech",2017,400,"$50M-$100M","Series D",
+            "Python,React,GCP","Medium","Solar ML,Design AI",
+            45,28_000_000,832_000,"n/a","USA"));
+        firms.add(new Startup("Watershed","CleanTech",2019,200,"$10M-$50M","Series B",
+            "TypeScript,Python,GCP","Medium","LLM carbon,Scope AI",
+            110,14_000_000,416_000,"W19","USA"));
+        firms.add(new Startup("Crusoe Energy","CleanTech",2018,500,"$50M-$100M","Series C",
+            "Python,Terraform,CUDA","High","GPU AI,ML workloads,Energy AI",
+            85,36_000_000,1_040_000,"n/a","USA"));
+        firms.add(new Startup("Samsara","CleanTech",2015,3000,"$500M-$1B","Public",
+            "Go,React,AWS","High","Fleet AI,Driver ML,Route AI",
+            30,170_000_000,6_240_000,"W15","USA"));
+        firms.add(new Startup("Redwood Materials","CleanTech",2017,2000,"$500M-$1B","Series D",
+            "Python,React,AWS","Medium","Process ML,Quality AI",
+            40,95_000_000,4_160_000,"n/a","USA"));
+
+        // ── AI / ML (5) ───────────────────────────────────────────────
+        firms.add(new Startup("Perplexity","AI/ML",2022,150,"$50M-$100M","Series C",
+            "Python,TypeScript,CUDA","High","Sonar LLM,RAG engine,Index AI,Rerank AI,Answer AI",
+            300,12_000_000,312_000,"n/a","USA"));
+        firms.add(new Startup("Mistral AI","AI/ML",2023,200,"$100M-$500M","Series B",
+            "Python,C++,CUDA","High","Mistral 7B,Mixtral,Le Chat,Codestral,Embed AI",
+            400,18_000_000,416_000,"n/a","FRA"));
+        firms.add(new Startup("Character.AI","AI/ML",2021,200,"$100M-$500M","Series A",
+            "Python,Go,TPUs","High","Character LLM,Persona AI,Safety AI,RP AI",
+            250,15_000_000,416_000,"n/a","USA"));
+        firms.add(new Startup("Together AI","AI/ML",2022,100,"$50M-$100M","Series A",
+            "Python,CUDA,Rust","High","Inference AI,Fine-tune engine,FlashAttn,Open Models,RedPajama",
+            280,8_000_000,208_000,"n/a","USA"));
+        firms.add(new Startup("Modal","AI/ML",2021,60,"$10M-$50M","Series B",
+            "Python,Rust,Kubernetes","High","Serverless AI,GPU ML,Deploy AI,Sandbox AI",
+            200,5_000_000,124_800,"S21","USA"));
+    }
+
+    // ═══════════════════════════════════════════════════════════════════
+    //  SECTION 1 — ADD / REMOVE / SEARCH / ITERATE
+    //  These four are what your teacher is specifically looking for
+    // ═══════════════════════════════════════════════════════════════════
+
+    /** ADD — append a firm to the list */
+    static void addFirm(Startup s) {
+        firms.add(s);
+        System.out.println("✓ Added: " + s.name + " (total: " + firms.size() + " firms)");
+    }
+
+    /** REMOVE — find by name and remove using Iterator (safe mid-loop removal) */
+    static boolean removeFirm(String name) {
+        Iterator<Startup> it = firms.iterator();
+        while (it.hasNext()) {
+            Startup s = it.next();
+            if (s.name.equalsIgnoreCase(name)) {
+                it.remove();   // <-- Iterator.remove(), not list.remove() inside a loop
+                System.out.println("✓ Removed: " + name + " (total: " + firms.size() + " firms)");
+                return true;
+            }
+        }
+        System.out.println("✗ Not found: " + name);
+        return false;
+    }
+
+    /** SEARCH — find and return one firm by name (null if not found) */
+    static Startup searchByName(String name) {
+        for (Startup s : firms) {            // for-each = iteration
+            if (s.name.equalsIgnoreCase(name)) return s;
+        }
+        return null;
+    }
+
+    /** SEARCH — return a filtered ArrayList by industry */
+    static ArrayList<Startup> searchByIndustry(String industry) {
+        ArrayList<Startup> results = new ArrayList<>();
+        for (Startup s : firms) {
+            if (s.industry.equalsIgnoreCase(industry)) results.add(s);
+        }
+        return results;
+    }
+
+    /** SEARCH — return firms above a minimum TLS v2 threshold */
+    static ArrayList<Startup> searchByMinTLS(double minTLS) {
+        ArrayList<Startup> results = new ArrayList<>();
+        for (Startup s : firms) {
+            if (s.tlsV2() >= minTLS) results.add(s);
+        }
+        return results;
+    }
+
+    /** SEARCH — return YC-backed firms only */
+    static ArrayList<Startup> searchYC() {
+        ArrayList<Startup> results = new ArrayList<>();
+        for (Startup s : firms) {
+            if (!s.ycBatch.equalsIgnoreCase("n/a")) results.add(s);
+        }
+        return results;
+    }
+
+    /** ITERATE — print every firm in the list (basic iteration) */
+    static void printAll() {
+        System.out.println("\n── All " + firms.size() + " firms ──────────────────────────────────");
+        for (Startup s : firms) {
+            System.out.println(s);   // calls Startup.toString()
+        }
+        System.out.println();
+    }
+
+    /** ITERATE — print a specific ArrayList (reusable for filtered results) */
+    static void printList(ArrayList<Startup> list, String label) {
+        System.out.println("\n── " + label + " (" + list.size() + " firms) ────────────────────────");
+        if (list.isEmpty()) { System.out.println("  (no results)"); return; }
+        for (Startup s : list) System.out.println(s);
+        System.out.println();
+    }
+
+    // ═══════════════════════════════════════════════════════════════════
+    //  SECTION 2 — SORT  (Collections.sort with Comparator)
+    // ═══════════════════════════════════════════════════════════════════
+
+    static void sortByTLSv2()    { Collections.sort(firms, Comparator.comparingDouble(s -> -s.tlsV2())); }
+    static void sortByGrowth()   { Collections.sort(firms, Comparator.comparingInt(s -> -s.growthRate)); }
+    static void sortByEmployees(){ Collections.sort(firms, Comparator.comparingInt(s -> s.employees)); }
+    static void sortByName()     { Collections.sort(firms, Comparator.comparing(s -> s.name)); }
+    static void sortByROI()      { Collections.sort(firms, Comparator.comparingDouble(s -> -s.roiProxy())); }
+
+    // ═══════════════════════════════════════════════════════════════════
+    //  SECTION 3 — STATISTICS  (uses iteration over the ArrayList)
+    // ═══════════════════════════════════════════════════════════════════
+
+    static void printStats() {
+        double sumV1 = 0, sumV2 = 0, sumEmp = 0, sumGrowth = 0;
+        double minV2 = Double.MAX_VALUE, maxV2 = Double.MIN_VALUE;
+        Startup topFirm = null;
+
+        for (Startup s : firms) {          // iterate to accumulate
+            sumV1    += s.tlsV1();
+            sumV2    += s.tlsV2();
+            sumEmp   += s.employees;
+            sumGrowth+= s.growthRate;
+            if (s.tlsV2() > maxV2) { maxV2 = s.tlsV2(); topFirm = s; }
+            if (s.tlsV2() < minV2)   minV2 = s.tlsV2();
+        }
+
+        int n = firms.size();
+        System.out.println("\n╔══════════════════════════════════════════════╗");
+        System.out.println("║           STATISTICS DASHBOARD               ║");
+        System.out.println("╠══════════════════════════════════════════════╣");
+        System.out.printf( "║  Firms in database:  %-24d║%n", n);
+        System.out.printf( "║  Mean TLS v1:        %-24.1f║%n", sumV1/n);
+        System.out.printf( "║  Mean TLS v2:        %-24.1f║%n", sumV2/n);
+        System.out.printf( "║  Min  TLS v2:        %-24.1f║%n", minV2);
+        System.out.printf( "║  Max  TLS v2:        %-24.1f║%n", maxV2);
+        System.out.printf( "║  Mean employees:     %-24.0f║%n", sumEmp/n);
+        System.out.printf( "║  Mean growth:        %-23.0f%%║%n", sumGrowth/n);
+        System.out.printf( "║  Top firm (TLS v2):  %-24s║%n",
+            topFirm != null ? topFirm.name : "—");
+        System.out.println("╚══════════════════════════════════════════════╝\n");
+    }
+
+    // ═══════════════════════════════════════════════════════════════════
+    //  SECTION 4 — RANKED TABLE  (sort then iterate)
+    // ═══════════════════════════════════════════════════════════════════
+
+    static void printRankedTable(int topN) {
+        sortByTLSv2();
+        System.out.println("\n Rank │ Company              │ Industry   │  Emp │ TLS v1 │ TLS v2 │ Growth");
+        System.out.println("──────┼──────────────────────┼────────────┼──────┼────────┼────────┼───────");
+        int rank = 1;
+        for (Startup s : firms) {         // iterate in sorted order
+            if (rank > topN) break;
+            String medal = rank == 1 ? " 🥇" : rank == 2 ? " 🥈" : rank == 3 ? " 🥉" : String.format("%3d ", rank);
+            System.out.printf("%s │ %-20s │ %-10s │ %4d │%7.0f │%7.0f │ %3d%%%n",
+                medal,
+                s.name.length() > 20 ? s.name.substring(0, 19) + "…" : s.name,
+                s.industry,
+                s.employees,
+                s.tlsV1(), s.tlsV2(),
+                s.growthRate);
+            rank++;
+        }
+        System.out.println();
+    }
+
+    // ═══════════════════════════════════════════════════════════════════
+    //  SECTION 5 — UPDATE  (search + mutate)
+    // ═══════════════════════════════════════════════════════════════════
+
+    static void updateEmployees(String name, int newCount) {
+        Startup s = searchByName(name);
+        if (s == null) { System.out.println("Not found: " + name); return; }
+        s.employees  = newCount;
+        s.laborHours = newCount * 2080.0;
+        System.out.printf("✓ Updated %s → %d employees (new TLS v2: %.1f)%n",
+            name, newCount, s.tlsV2());
+    }
+
+    static void updateGrowth(String name, int newGrowth) {
+        Startup s = searchByName(name);
+        if (s == null) { System.out.println("Not found: " + name); return; }
+        s.growthRate = newGrowth;
+        System.out.printf("✓ Updated %s → %d%% growth (new TLS v2: %.1f)%n",
+            name, newGrowth, s.tlsV2());
+    }
+
+    // ═══════════════════════════════════════════════════════════════════
+    //  MAIN — runs the full demo
+    // ═══════════════════════════════════════════════════════════════════
+    public static void main(String[] args) {
+
+        System.out.println("╔══════════════════════════════════════════════╗");
+        System.out.println("║     TLS Platform v2  —  ArrayList Edition   ║");
+        System.out.println("║  Technology Leverage Score Research Engine   ║");
+        System.out.println("╚══════════════════════════════════════════════╝");
+
+        // 1. LOAD ─────────────────────────────────────────────────────
+        loadData();
+        System.out.println("Loaded " + firms.size() + " firms.\n");
+
+        // 2. ITERATE — print all ──────────────────────────────────────
+        printAll();
+
+        // 3. STATS ────────────────────────────────────────────────────
+        printStats();
+
+        // 4. RANKED TABLE (top 15 by TLS v2) ─────────────────────────
+        System.out.println("=== TOP 15 by TLS v2 ===");
+        printRankedTable(15);
+
+        // 5. SEARCH demos ─────────────────────────────────────────────
+        System.out.println("=== SEARCH: CyberSec firms ===");
+        printList(searchByIndustry("CyberSec"), "CyberSec");
+
+        System.out.println("=== SEARCH: YC-backed only ===");
+        ArrayList<Startup> ycFirms = searchYC();
+        sortByROI();  // sort the main list then iterate only YC ones
+        System.out.println("YC firms ranked by ROI Proxy:");
+        int r = 1;
+        for (Startup s : firms) {
+            if (!s.ycBatch.equalsIgnoreCase("n/a")) {
+                System.out.printf("  %2d. %-20s  ROI: %8.0f  Batch: %s%n",
+                    r++, s.name, s.roiProxy(), s.ycBatch);
+            }
+        }
+
+        System.out.println("\n=== SEARCH: High-TLS firms (v2 > 55,000) ===");
+        printList(searchByMinTLS(55_000), "TLS v2 > 55,000");
+
+        System.out.println("=== SEARCH: single firm by name ===");
+        Startup found = searchByName("Linear");
+        if (found != null) found.printCard();
+
+        // 6. ADD a new firm ───────────────────────────────────────────
+        System.out.println("=== ADD ===");
+        addFirm(new Startup(
+            "Fireworks AI","AI/ML",2022,80,"$10M-$50M","Series B",
+            "Python,CUDA,Go","High",
+            "Inference engine,FireFunction,FireLLaVA,Quantize AI",
+            320, 6_000_000, 166_400, "n/a","USA"
+        ));
+
+        // 7. UPDATE ───────────────────────────────────────────────────
+        System.out.println("\n=== UPDATE ===");
+        updateEmployees("Linear", 95);
+        updateGrowth("Ramp", 95);
+
+        // 8. REMOVE ───────────────────────────────────────────────────
+        System.out.println("\n=== REMOVE ===");
+        removeFirm("Loom");
+        removeFirm("DoesNotExist");
+
+        // 9. FINAL stats after changes ────────────────────────────────
+        System.out.println("\n=== FINAL STATE ===");
+        printStats();
+        System.out.println("Top 5 after all changes:");
+        printRankedTable(5);
+
+        // ── HOW TO ADD YOUR OWN FIRMS ─────────────────────────────────
+        // Copy this block and fill in your data:
+        //
+        // addFirm(new Startup(
+        //     "YourCompany",       // name
+        //     "Fintech",           // industry
+        //     2022,                // founded year
+        //     80,                  // employees (FTE)
+        //     "$10M-$50M",         // revenue range
+        //     "Series A",          // funding stage
+        //     "Python,React,AWS",  // tech stack
+        //     "High",              // automation: Low | Medium | High
+        //     "GPT-4,Custom ML",   // AI tools (comma-separated)
+        //     75,                  // growth % (YoY)
+        //     5_000_000,           // annual tech spend ($)
+        //     166_400,             // labor hours (employees × 2080)
+        //     "W23",               // YC batch or "n/a"
+        //     "USA"                // country code
+        // ));
+    }
+}
