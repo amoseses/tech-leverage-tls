@@ -1,0 +1,28 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:             tls_scaled   R-squared:                       0.361
+Model:                            OLS   Adj. R-squared:                  0.331
+Method:                 Least Squares   F-statistic:                     12.12
+Date:                Wed, 04 Feb 2026   Prob (F-statistic):           6.69e-05
+Time:                        16:25:26   Log-Likelihood:                -699.96
+No. Observations:                  46   AIC:                             1406.
+Df Residuals:                      43   BIC:                             1411.
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+=====================================================================================
+                        coef    std err          t      P>|t|      [0.025      0.975]
+-------------------------------------------------------------------------------------
+const              2.175e+05   2.67e+05      0.815      0.420   -3.21e+05    7.56e+05
+employees_fte        -0.0749      0.020     -3.840      0.000      -0.114      -0.036
+annual_tech_spend     0.0076      0.002      4.313      0.000       0.004       0.011
+==============================================================================
+Omnibus:                       41.608   Durbin-Watson:                   2.012
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              131.408
+Skew:                           2.424   Prob(JB):                     2.92e-29
+Kurtosis:                       9.713   Cond. No.                     2.90e+08
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 2.9e+08. This might indicate that there are
+strong multicollinearity or other numerical problems.
