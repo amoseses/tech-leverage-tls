@@ -4,6 +4,7 @@ from src.tls_calculator.tls_calculator import compute_tls
 
 def test_compute_tls_math():
     df = pd.DataFrame({
+        "tech_tools_list": ["Shopify, QuickBooks, Slack"],
         "annual_tech_spend": [12000],
         "capital_invested": [60000],
         "total_quarterly_labor_hours": [300],
