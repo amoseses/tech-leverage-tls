@@ -8,20 +8,22 @@ if not infile.exists():
 
 df = pd.read_csv(infile)
 print("Loaded", len(df), "rows")
-print(df[['firm_id','firm_name','tls']].head())
+print(df[['firm_llc_id', 'tls_raw', 'tls_scaled']].head())
 
-# Summary stats
-summary = df['tls'].describe()
+summary = df['tls_scaled'].describe()
 print(summary)
+
 Path("results").mkdir(parents=True, exist_ok=True)
 Path("results/figures").mkdir(parents=True, exist_ok=True)
+
 figpath = Path("results/figures/tls_hist.png")
-plt.hist(df['tls'].dropna(), bins=10)
-plt.title("TLS distribution")
-plt.xlabel("TLS")
+plt.hist(df['tls_scaled'].dropna(), bins=10)
+plt.title("TLS Distribution")
+plt.xlabel("TLS (scaled)")
 plt.ylabel("Count")
+plt.tight_layout()
 plt.savefig(figpath)
 print("Saved histogram to", figpath)
-# Save summary
+
 summary.to_csv("results/summary_stats.csv")
 print("Saved summary to results/summary_stats.csv")
