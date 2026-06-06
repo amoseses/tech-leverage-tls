@@ -3,8 +3,8 @@
 Dep. Variable:             tls_scaled   R-squared:                       0.361
 Model:                            OLS   Adj. R-squared:                  0.331
 Method:                 Least Squares   F-statistic:                     12.12
-Date:                Wed, 04 Feb 2026   Prob (F-statistic):           6.69e-05
-Time:                        16:25:26   Log-Likelihood:                -699.96
+Date:                Fri, 29 May 2026   Prob (F-statistic):           6.69e-05
+Time:                        17:14:58   Log-Likelihood:                -699.96
 No. Observations:                  46   AIC:                             1406.
 Df Residuals:                      43   BIC:                             1411.
 Df Model:                           2                                         
