@@ -9,7 +9,7 @@ TLS = 1000 × (Technology Spend ÷ Annual Labor Hours)
 ## What's Included
 
 - Full Python research and analytics pipeline
-- Expanded validation dataset (100 firms)
+- Expanded validation dataset pipline - Log-log
 - Original study replication (46 firms)
 - Regression and benchmarking tools
 - Sector analysis and reporting
@@ -65,7 +65,7 @@ As additional companies are added, TLS benchmarking becomes more robust and usef
 - Organizational technology strategy
 
 ## Run
-
+Import company data into docs/raw
 ```bash
 pip install -r requirements.txt
 python scripts/run_pipeline.py
