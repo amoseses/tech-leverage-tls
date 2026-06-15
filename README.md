@@ -1,7 +1,3 @@
-# Technology Leverage Score (TLS)
-
-Technology Leverage Score (TLS) measures how effectively a company converts technology investment into productive labor capacity.
-
 **Formula**
 
 TLS = 1000 × (Technology Spend ÷ Annual Labor Hours)
