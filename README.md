@@ -1,81 +1,71 @@
 # Technology Leverage Score (TLS)
 
-A quantitative framework for measuring how efficiently firms 
-convert technology investment into productive capacity.
+Technology Leverage Score (TLS) measures how effectively a company converts technology investment into productive labor capacity.
 
-> **TLS = 1000 × (Annual Tech Spend / Total Labor Hours)**
+**Formula**
 
-Built on the paper: *"Technology Leverage Score: A Quantitative 
-Framework for Measuring Technology Investment Efficiency in Modern 
-Firms"* — cross-sectional study of 46 technology-sector firms 
-showing larger firms consistently achieve lower technology leverage 
-per labor hour (β = −0.0731, p < 0.001).
+TLS = 1000 × (Technology Spend ÷ Annual Labor Hours)
 
----
+## What's Included
 
-## Repository Map
+- Full Python research and analytics pipeline
+- Expanded validation dataset (100 firms)
+- Original study replication (46 firms)
+- Regression and benchmarking tools
+- Sector analysis and reporting
+- Lightweight Java implementation for quick TLS calculations
 
-| Folder | What it is |
-|---|---|
-| `src/` | Original TLS v1 calculator — preserved for paper reproducibility |
-| `scripts/` | Full analysis pipeline (ingest → clean → TLS → regression → output) |
-| `data/` | Firm-level CSV inputs |
-| `results/` | Pipeline outputs: charts, regression tables, TLS rankings |
-| `notebooks/` | Exploratory analysis and figures from the paper |
-| `docs/` | Paper PDF and supplementary materials |
-| `templates/` | Input CSV schema for data collection |
-| `tests/` | Automated test suite |
-| `tools/java/` | Standalone TLS scoring tool (Java, no dependencies) |
+## Implementations
 
----
+### Python (Recommended)
+The primary and most complete implementation, including:
 
-## Quickstart — Run the Analysis Pipeline
+- Data ingestion and cleaning
+- TLS calculation
+- Statistical analysis
+- Log-log regression models
+- Sector benchmarking
+- Validation testing
+
+### Java
+A lightweight version intended for:
+
+- Quick TLS scoring
+- Demonstrations
+- Educational use
+- Fast local execution
+
+## Key Findings
+
+The expanded validation confirms the original TLS research:
+
+- Technology spend is positively associated with TLS
+- Larger firms generally exhibit lower technology leverage when controlling for spend
+- Sector-level TLS rankings align with industry expectations
+- Original study findings were successfully replicated
+
+## Validation
+
+The pipeline has been validated through:
+
+- Data ingestion testing
+- TLS formula verification
+- Regression testing
+- Outlier analysis
+- Sector benchmarking
+- Original-study replication
+
+## Future Development
+
+As additional companies are added, TLS benchmarking becomes more robust and useful for:
+
+- Cross-company comparisons
+- Industry benchmarking
+- Enterprise analytics
+- Organizational technology strategy
+
+## Run
+
 ```bash
-# create virtual environment
-python -m venv venv
-source venv/bin/activate          # Windows: venv\Scripts\activate
-
-# install dependencies
 pip install -r requirements.txt
-
-# run tests
-pytest -q
-
-# run the full pipeline
-# (put your firm CSV in /data first — see /templates for schema)
-python scripts/tls_pipeline.py
-```
-
-Results land in `/results/`.
-
----
-
-## Quickstart — Java Scoring Tool
-```bash
-cd tools/java
-javac Startup.java TLSPlatform.java
-java TLSPlatform
-```
-
-Scores and ranks 50 technology-sector firms. No dependencies. 
-Requires Java 17+. See `tools/java/README.md` for details.
-
----
-
-## The Core Finding
-
-Larger firms show diminishing returns on technology leverage. 
-The ratio of tech spend to labor — not absolute spend — is what 
-drives operational efficiency.
-
-A firm doubling headcount without scaling its tech budget will 
-see TLS decline over time. This is confirmed by both the 
-full OLS model (β = −0.0749, p < 0.001) and the employees-only 
-robustness check (β = −0.0731, p < 0.001) free of mechanical 
-confounding.
-
----
-
-## TLS v2 (Extended Formula)
-
-Building on v1, TLS v2 incorporates three additional signals:
+python scripts/run_pipeline.py
