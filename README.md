@@ -64,5 +64,5 @@ As additional companies are added, TLS benchmarking becomes more robust and usef
 Import company data into docs/raw
 ```bash
 pip install -r requirements.txt
-python scripts/run_pipeline.py "data/raw/tls_intake_2025_v1 - Sheet1 (6).csv"
+python scripts/run_pipeline.py "data/raw/TLS_dataset_COMPLETE - TLS_dataset_COMPLETE_236.csv"
 
